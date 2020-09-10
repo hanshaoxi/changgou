@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.changgou</groupId>
     <artifactId>changgou-service-goods-api</artifactId>
 
 

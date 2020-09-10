@@ -8,12 +8,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.changgou</groupId>
     <artifactId>changgou-common</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
 
-   <!-- <version>1.0-SNAPSHOT</version>-->
-    <packaging>pom</packaging>
     <dependencies>
         <!--web起步依赖-->
         <dependency>

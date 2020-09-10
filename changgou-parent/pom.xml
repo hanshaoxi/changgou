@@ -16,11 +16,7 @@
         <module>changgou-eureka</module>
         <module>changgou-common</module>
         <module>changgou-common-db</module>
-        <module>changgou-service-goods-api</module>
-        <module>changgou-service-goods-api</module>
-        <module>changgou-service-goods</module>
     </modules>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -78,6 +74,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 </project>
