@@ -1,6 +1,8 @@
 package com.changgou.goods.service.impl;
 
+import com.changgou.goods.mapper.CategoryMapper;
 import com.changgou.goods.mapper.SpecMapper;
+import com.changgou.goods.pojo.Category;
 import com.changgou.goods.pojo.Spec;
 import com.changgou.goods.service.SpecService;
 import com.github.pagehelper.PageHelper;
@@ -15,6 +17,9 @@ import java.util.List;
 public class SpecServiceImpl implements SpecService {
     @Autowired
     private SpecMapper specMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Override
     public List<Spec> findPage(int pageSize, int pageNum) {
@@ -67,4 +72,15 @@ public class SpecServiceImpl implements SpecService {
     public void add(Spec spec) {
         specMapper.insertSelective(spec);
     }
+
+    @Override
+    public List<Spec> findByCategoryId(Integer categoryId) {
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
+
+        Spec spec = new Spec();
+        spec.setTemplateId(category.getTemplateId());
+        return specMapper.select(spec);
+    }
+
+
 }

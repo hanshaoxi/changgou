@@ -26,4 +26,6 @@ public interface ParaService {
     public void delete(Para para);
     public List<Para> findPage(Integer pageSize, Integer pageNum);
     public List<Para> findPage(Integer PageSize,Integer pageNum,Para para);
+
+    public List<Para> findByCategoryId(Integer categoryId);
 }

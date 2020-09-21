@@ -1,6 +1,8 @@
 package com.changgou.goods.service.impl;
 
+import com.changgou.goods.mapper.CategoryMapper;
 import com.changgou.goods.mapper.ParaMapper;
+import com.changgou.goods.pojo.Category;
 import com.changgou.goods.pojo.Para;
 import com.changgou.goods.service.ParaService;
 import com.github.pagehelper.PageHelper;
@@ -16,6 +18,8 @@ public class ParaServiceImpl implements ParaService {
 
     @Autowired
     private ParaMapper paraMapper;
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Override
     public Para findById(Integer id) {
@@ -68,5 +72,13 @@ public class ParaServiceImpl implements ParaService {
 
 
         return paraMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<Para> findByCategoryId(Integer categoryId) {
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
+        Para para = new Para();
+        para.setTemplateId(category.getTemplateId());
+        return paraMapper.select(para);
     }
 }

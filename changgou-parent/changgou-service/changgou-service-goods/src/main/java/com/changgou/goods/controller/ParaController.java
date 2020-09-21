@@ -3,6 +3,7 @@ package com.changgou.goods.controller;
 import com.changgou.goods.pojo.Para;
 import com.changgou.goods.service.ParaService;
 import entity.Result;
+import entity.ResultUtil;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +61,11 @@ public class ParaController {
         paraService.delete(id);
 
         return new Result(true, StatusCode.OK,"删除成功");
+    }
+
+    @GetMapping("/category/{id}")
+    public Result<List<Para>> findByCategoryid(@PathVariable("id") Integer categoryId){
+        return ResultUtil.findSuccess(paraService.findByCategoryId(categoryId));
     }
 
 

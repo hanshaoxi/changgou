@@ -53,4 +53,6 @@ public interface SpecService {
      */
     public void add(Spec spec);
 
+    public List<Spec> findByCategoryId(Integer  categoryId);
+
 }

@@ -1,8 +1,11 @@
 package com.changgou.goods.controller;
 
+import com.changgou.goods.pojo.Category;
 import com.changgou.goods.pojo.Spec;
+import com.changgou.goods.service.CategoryService;
 import com.changgou.goods.service.SpecService;
 import entity.Result;
+import entity.ResultUtil;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,9 @@ import java.util.List;
 public class SpecController {
     @Autowired
     private SpecService specService;
+    @Autowired
+    private CategoryService categoryService;
+
     @PostMapping
     public Result add(@RequestBody Spec spec){
         specService.add(spec);
@@ -71,5 +77,10 @@ public class SpecController {
         spec.setId(id);
         specService.update(spec);
         return  new Result(true,StatusCode.OK,"修改成功");
+    }
+
+    @GetMapping("/category/{id}")
+    public Result<List<Spec>> findByCategoryId(@PathVariable("id") Integer categoryId){
+        return ResultUtil.findSuccess(specService.findByCategoryId(categoryId));
     }
 }
