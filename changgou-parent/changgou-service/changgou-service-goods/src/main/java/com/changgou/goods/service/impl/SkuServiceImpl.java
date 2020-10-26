@@ -70,4 +70,9 @@ public class SkuServiceImpl implements SkuService {
     public void delete(Sku sku) {
         skuMapper.delete(sku);
     }
+
+    @Override
+    public List<Sku> findAll() {
+        return skuMapper.selectAll();
+    }
 }

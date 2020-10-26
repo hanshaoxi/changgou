@@ -52,4 +52,10 @@ public class SkuController {
         skuService.update(sku);
         return ResultUtil.updateSuccess();
     }
+
+    @GetMapping
+    public Result<List<Sku>> findSkuList(){
+        List<Sku> skuList = skuService.findAll();
+        return  new Result(true,StatusCode.OK,"查询成功",skuList);
+    }
 }

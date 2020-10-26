@@ -1,6 +1,7 @@
 package com.changgou.goods.service;
 
 import com.changgou.goods.pojo.Goods;
+import com.changgou.goods.pojo.Sku;
 import com.changgou.goods.pojo.Spu;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface SpuService  {
     public void pull(Long spuId);
     public void put(Long spuId);
     public void putMany(Long[] spuIds);
+
 
 }

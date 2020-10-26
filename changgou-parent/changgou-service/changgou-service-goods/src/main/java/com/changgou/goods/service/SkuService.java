@@ -16,4 +16,5 @@ public interface SkuService {
     public List<Sku> findPage(Sku sku, Integer pageNum, Integer pageSize);
     public void delete(Long id);
     public void delete(Sku sku);
+    public List<Sku> findAll();
 }
