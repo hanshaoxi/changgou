@@ -23,7 +23,7 @@ public class SearchController {
 
     }
     @GetMapping
-    public Map query(@RequestParam(required = false) Map<String,String> map){
+    public Map search(@RequestParam(required = false) Map<String,String> map){
         Map resultMap = skuService.search(map);
         System.out.println(resultMap);
         return resultMap;

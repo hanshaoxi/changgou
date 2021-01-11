@@ -212,28 +212,28 @@ public class SkuServiceImpl implements SkuService {
     private Map<String,Object> searchGroupList(NativeSearchQueryBuilder query, Map<String, String> searchMap) {
 
         Map<String,Object> resultMap = new HashMap<>();
-        if (searchMap != null && !StringUtils.isEmpty(searchMap.get("category"))) {
-
+       /* if (searchMap != null && !StringUtils.isEmpty(searchMap.get("category"))) {
+*/
             query.addAggregation(AggregationBuilders.terms("skuCategory").field("categoryName"));
-        }
-        if (searchMap != null && !StringUtils.isEmpty("brand")) {
-
+       /* }*/
+        /*if (searchMap != null && !StringUtils.isEmpty("brand")) {
+*/
             query.addAggregation(AggregationBuilders.terms("skuBrand").field("brandName"));
-        }
+       /* }*/
         query.addAggregation(AggregationBuilders.terms("skuSpec").field("spec.keyword"));
 
 
         AggregatedPage<SkuInfo> aggregatedPage = elasticsearchTemplate.queryForPage(query.build(), SkuInfo.class);
-        if (searchMap != null && !StringUtils.isEmpty(searchMap.get("category"))) {
+       /* if (searchMap != null && !StringUtils.isEmpty(searchMap.get("category"))) {*/
             StringTerms skuCategory = (StringTerms) aggregatedPage.getAggregation("skuCategory");
             List<String> skuCategoryList = getGroupList(skuCategory);
             resultMap.put("skuCategoryList",skuCategoryList);
-        }
-        if (searchMap != null && !StringUtils.isEmpty("brand")) {
+        /*}*/
+       /* if (searchMap != null && !StringUtils.isEmpty("brand")) {*/
         StringTerms skuBrand = (StringTerms) aggregatedPage.getAggregation("skuBrand");
             List<String> skuBrandList = getGroupList(skuBrand);
             resultMap.put("skuBrandList",skuBrandList);
-        }
+        /*}*/
         StringTerms skuSpec = (StringTerms) aggregatedPage.getAggregation("skuSpec");
         List<String> skuSpecList = getGroupList(skuSpec);
         Map<String,Set<String>> specSetMap = getSpecSetMap(skuSpecList);
