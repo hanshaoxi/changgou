@@ -17,6 +17,7 @@
         <module>changgou-service-file</module>
         <module>changgou-service-canal</module>
         <module>changgou-service-search</module>
+        <module>changgou-service-user/changgou-service-user</module>
     </modules>
 
     <!--依赖-->

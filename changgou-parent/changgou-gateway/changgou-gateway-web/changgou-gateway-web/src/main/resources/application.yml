@@ -1,6 +1,9 @@
 spring:
   application:
     name: gateway-web
+  redis:
+    host: 192.168.211.132
+    port: 6379
   cloud:
     gateway:
       globalcors:
@@ -14,9 +17,19 @@ spring:
               - DELETE
       routes:
         - id: changgou_goods_route
-          uri: http://localhost:18081/brand
+          uri: lb://goods
           predicates:
-            - Host=cloud.changgou.com**
+           # - Host=cloud.changgou.com**
+          - Path=/api/brand/**
+            #- Subs
+          filters:
+          - StripPrefix=1
+          - name: RequestRateLimiter
+            args:
+              key-resolver: "#{@ipKeyResolver}"
+              redis-rate-limiter.replenishRate: 1
+              redis-rate-limiter.burstCapacity: 1
+
 server:
   port: 8001
 eureka:
