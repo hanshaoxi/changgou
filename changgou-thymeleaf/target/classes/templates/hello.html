@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <div th:text="${message}"></div>
+    <table>
+        <th>
+            <td>index</td>
+            <td>id</td>
+            <td>name</td>
+        </th>
+        <tr th:each="user,userStat:${userList}">
+        <td th:text="${userStat.index}">index</td>
+        <td th:text="${user.id}">id</td>
+        <td th.text="${user.username}">name</td>
+        </tr>
+    </table>
+    <p th:text="${dataMap.user}"></p>
+   <!-- <p th:each="mp,mpstat:${dataMap}">
+     <p th:text="${mp}"></p>
+    </p>-->
+     <form th:action="@{/user/hello}">
+
+     </form>
+    <p th:text="${#dates.format(now,'yyyy-mm-dd')}"></p>
+    <p th:if="${age>18}"></p>
+    <p th:unless="${age<18}"></p>
+</body>
+</html>
